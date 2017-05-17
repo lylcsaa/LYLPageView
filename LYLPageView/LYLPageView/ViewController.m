@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "LYLPageView.h"
-
+#import "HomePageViewController.h"
 @interface ViewController ()
 
 @end
@@ -22,7 +22,8 @@
     
     NSMutableArray *arrM = [NSMutableArray array];
     for (int i = 0; i < titles.count; i ++) {
-        UIViewController *vc = [[UIViewController alloc] init];
+        
+        HomePageViewController *vc = [[HomePageViewController alloc] init];
         vc.view.backgroundColor = [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1.0];
         [arrM addObject:vc];
     }

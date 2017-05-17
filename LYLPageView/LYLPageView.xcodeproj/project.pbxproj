@@ -18,6 +18,8 @@
 		2B423BC61EC57F77006B8020 /* LYLTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B423BC51EC57F77006B8020 /* LYLTitleView.m */; };
 		2B423BC91EC57FA2006B8020 /* LYLContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B423BC81EC57FA2006B8020 /* LYLContainerView.m */; };
 		2B423BCC1EC57FBE006B8020 /* LYLPageViewStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B423BCB1EC57FBE006B8020 /* LYLPageViewStyle.m */; };
+		2BA609E41ECC3A0B0098CFC1 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA609E31ECC3A0B0098CFC1 /* HomePageViewController.m */; };
+		2BA609E71ECC42100098CFC1 /* WateFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA609E61ECC42100098CFC1 /* WateFlowLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,10 @@
 		2B423BC81EC57FA2006B8020 /* LYLContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYLContainerView.m; sourceTree = "<group>"; };
 		2B423BCA1EC57FBE006B8020 /* LYLPageViewStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYLPageViewStyle.h; sourceTree = "<group>"; };
 		2B423BCB1EC57FBE006B8020 /* LYLPageViewStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYLPageViewStyle.m; sourceTree = "<group>"; };
+		2BA609E21ECC3A0B0098CFC1 /* HomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
+		2BA609E31ECC3A0B0098CFC1 /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
+		2BA609E51ECC42100098CFC1 /* WateFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WateFlowLayout.h; sourceTree = "<group>"; };
+		2BA609E61ECC42100098CFC1 /* WateFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WateFlowLayout.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +84,10 @@
 				2B423BAC1EC57EF9006B8020 /* AppDelegate.m */,
 				2B423BAE1EC57EF9006B8020 /* ViewController.h */,
 				2B423BAF1EC57EF9006B8020 /* ViewController.m */,
+				2BA609E21ECC3A0B0098CFC1 /* HomePageViewController.h */,
+				2BA609E31ECC3A0B0098CFC1 /* HomePageViewController.m */,
+				2BA609E51ECC42100098CFC1 /* WateFlowLayout.h */,
+				2BA609E61ECC42100098CFC1 /* WateFlowLayout.m */,
 				2B423BB11EC57EF9006B8020 /* Main.storyboard */,
 				2B423BB41EC57EF9006B8020 /* Assets.xcassets */,
 				2B423BB61EC57EF9006B8020 /* LaunchScreen.storyboard */,
@@ -186,6 +196,8 @@
 			files = (
 				2B423BB01EC57EF9006B8020 /* ViewController.m in Sources */,
 				2B423BC31EC57F67006B8020 /* LYLPageView.m in Sources */,
+				2BA609E71ECC42100098CFC1 /* WateFlowLayout.m in Sources */,
+				2BA609E41ECC3A0B0098CFC1 /* HomePageViewController.m in Sources */,
 				2B423BC91EC57FA2006B8020 /* LYLContainerView.m in Sources */,
 				2B423BAD1EC57EF9006B8020 /* AppDelegate.m in Sources */,
 				2B423BC61EC57F77006B8020 /* LYLTitleView.m in Sources */,

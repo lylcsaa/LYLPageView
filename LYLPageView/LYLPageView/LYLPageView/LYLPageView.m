@@ -7,7 +7,7 @@
 //
 
 #import "LYLPageView.h"
-@interface LYLPageView ()
+@interface LYLPageView ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property(nonatomic,strong) NSArray *titles;
 /**
  **:自控制器
@@ -32,9 +32,19 @@
  **/
 @property (nonatomic,strong)LYLContainerView *containerView;
 
+
+/**
+ **:collectionView
+ **/
+@property (nonatomic,strong)UICollectionView *pageCollectionView;
+/**
+ **:pageControl
+ **/
+@property (nonatomic,strong)UIPageControl *pageControl;
+
 @end
 @implementation LYLPageView
-
+NSString *reuseCellId = @"cell";
 -(instancetype)initWithFrame:(CGRect)frame
                       titles:(NSArray*)titles
         childViewControllers:(NSArray*)childViewControllers
@@ -72,5 +82,78 @@
     
     self.titleView.delegate = self.containerView;
     self.containerView.delegate = self.titleView;
+}
+
+
+
+
+
+
+-(instancetype)initWithFrame:(CGRect)frame titles:(NSArray*)titles style:(LYLPageViewStyle *)style
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.titles = titles;
+        self.style = style;
+        [self setUpPageUI];
+    }
+    return self;
+}
+
+-(UICollectionView *)pageCollectionView
+{
+    if (!_pageCollectionView) {
+        LYLPageCollectionLayout *layout = [[LYLPageCollectionLayout alloc] init];
+        layout.minimumLineSpacing = 10;
+        layout.minimumInteritemSpacing = 10;
+        _pageCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.titleView.bounds), self.bounds.size.width, self.bounds.size.height - self.style.kPageControlHeight - self.style.kTitleViewHeight) collectionViewLayout:layout];
+        _pageCollectionView.delegate = self;
+        _pageCollectionView.dataSource = self;
+        _pageCollectionView.backgroundColor = [UIColor rondomColor];
+        _pageCollectionView.pagingEnabled = YES;
+        [_pageCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseCellId];
+    }
+    return _pageCollectionView;
+}
+-(UIPageControl *)pageControl
+{
+    if (!_pageControl) {
+        _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.pageCollectionView.frame), self.bounds.size.width, self.style.kPageControlHeight)];
+        _pageControl.numberOfPages = 4;
+        _pageControl.currentPage = 0;
+        _pageControl.backgroundColor = [UIColor rondomColor];
+    }
+    return _pageControl;
+}
+-(void)setUpPageUI
+{
+    [self addSubview:self.titleView];
+    [self addSubview:self.pageCollectionView];
+    [self addSubview:self.pageControl];
+}
+#pragma mark --- collectionViewDataSource--
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 3;
+}
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return 30;
+}
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseCellId forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor rondomColor];
+    return cell;
+}
+
+
+
+
+#pragma mark -- collectionViewDelegate--
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+
+
 }
 @end

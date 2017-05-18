@@ -7,6 +7,7 @@
 //
 
 #import "LYLTitleView.h"
+#import "LYLTitleLabel.h"
 @interface LYLTitleView()<UIScrollViewDelegate>
 @property (nonatomic,strong)NSArray *titles;
 /**
@@ -31,6 +32,11 @@
 /**
  **:<#注释#>
  **/
+
+/**
+ **:<#注释#>
+ **/
+@property (nonatomic,assign)BOOL isTouchTitle;
 @property (nonatomic,strong)CAShapeLayer *backLayer;
 @end
 @implementation LYLTitleView
@@ -42,6 +48,7 @@
         self.titles = titles;
         self.style = style;
         [self setUpUI];
+        _isTouchTitle = NO;
     }
     return self;
 }
@@ -50,10 +57,10 @@
     self.backgroundColor = self.style.kTitleViewBackgroundColor;
     [self addSubview:self.scrollView];
     NSMutableArray *arrM = [NSMutableArray array];
-    UILabel *lastLabel = nil;
+    LYLTitleLabel *lastLabel = nil;
     for (int i = 0; i < self.titles.count; i ++) {
         NSString *title = self.titles[i];
-        UILabel *label = [[UILabel alloc] initWithFrame:
+        LYLTitleLabel *label = [[LYLTitleLabel alloc] initWithFrame:
                           CGRectMake(lastLabel ? (lastLabel.frame.size.width + lastLabel.frame.origin.x + self.style.kTitleMargin) : self.style.kTitleMargin*0.5,
                                      0,
                                      [title boundingRectWithSize:CGSizeMake(MAXFLOAT, self.style.kTitleHeight) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : self.style.kTitleNomalFont} context:nil].size.width,
@@ -81,7 +88,35 @@
         lastLabel = label;
     }
     self.titleLabels = arrM;
-    self.scrollView.contentSize = CGSizeMake(CGRectGetMaxX(lastLabel.frame) + self.style.kTitleMargin*0.5, 0);
+    if (self.style.kEnableScroll) {
+        self.scrollView.contentSize = CGSizeMake(CGRectGetMaxX(lastLabel.frame) + self.style.kTitleMargin*0.5, 0);
+    }else{
+        CGFloat lastLabelMaxX = CGRectGetMaxX(lastLabel.frame);
+        CGFloat space = self.bounds.size.width - lastLabelMaxX - self.style.kTitleMargin;
+        if (space < 0) {
+            self.scrollView.contentSize = CGSizeMake(CGRectGetMaxX(lastLabel.frame) + self.style.kTitleMargin*0.5, 0);
+        }else{
+            self.scrollView.contentSize = CGSizeMake(0, 0);
+            CGFloat addMargin = space/self.titleLabels.count;
+            [self _resetFrames:addMargin];
+        }
+        
+    }
+    
+    
+}
+-(void)_resetFrames:(CGFloat)addMargin
+{
+    CGFloat lastX = 0;
+    for (LYLTitleLabel *label  in self.titleLabels) {
+        label.frame = CGRectMake(lastX ? lastX: self.style.kTitleMargin * 0.5, CGRectGetMinY(label.frame), CGRectGetWidth(label.frame) + addMargin, CGRectGetHeight(label.frame));
+        label.textAlignment = NSTextAlignmentCenter;
+        if (!lastX) {
+            [self _addBackMask:label];
+        }
+        lastX = CGRectGetMaxX(label.frame) + self.style.kTitleMargin;
+    }
+
 }
 -(void)_addBackMask:(UILabel*)label
 {
@@ -117,7 +152,8 @@
         _backLayer = [CAShapeLayer layer];
         _backLayer.backgroundColor = self.style.kTitleBackLayerColor.CGColor;
         _backLayer.shadowColor = [UIColor grayColor].CGColor;
-        _backLayer.shadowOpacity = 1.0;
+        _backLayer.opacity = 0.5;
+        _backLayer.shadowOpacity = 0.5;
         _backLayer.shadowOffset = CGSizeMake(2, 2);
         
     }
@@ -125,7 +161,8 @@
 }
 -(void)tapTitle:(UITapGestureRecognizer*)gr
 {
-    UILabel *tagartLabel = (UILabel*)gr.view;
+    _isTouchTitle = YES;
+    LYLTitleLabel *tagartLabel = (LYLTitleLabel*)gr.view;
     int tagartTag = (int)tagartLabel.tag;
     if (tagartTag == self.tagartTag) {
         return;
@@ -145,14 +182,14 @@
 }
 -(void)_selectedTitleWithTagartIndex:(int)tagartIndex
 {
-    UILabel *tagartLabel = self.titleLabels[tagartIndex];
+    LYLTitleLabel *tagartLabel = self.titleLabels[tagartIndex];
     [self _addBackMask:tagartLabel];
     if (tagartIndex == self.tagartTag) {
         return;
     }
-    UILabel *currentLabel = self.titleLabels[self.tagartTag];
-    currentLabel.textColor = self.style.kNomalTitleColor;
-    tagartLabel.textColor = self.style.kSelectedTitleColor;
+    LYLTitleLabel *currentLabel = self.titleLabels[self.tagartTag];
+    currentLabel.yl_textColor = self.style.kNomalTitleColor;
+    tagartLabel.yl_textColor = self.style.kSelectedTitleColor;
     currentLabel.transform = CGAffineTransformMakeScale(1, 1);
     tagartLabel.transform = CGAffineTransformMakeScale(1.2, 1.2);
     CGFloat offsetX = tagartLabel.center.x - self.scrollView.bounds.size.width*0.5;
@@ -163,8 +200,9 @@
     if (offsetX > maxOffsetX) {
         offsetX = maxOffsetX;
     }
-    
-    [self.scrollView setContentOffset:CGPointMake(offsetX, 0) animated:YES];
+    if (self.style.kEnableScroll) {
+         [self.scrollView setContentOffset:CGPointMake(offsetX, 0) animated:YES];
+    }
     self.tagartTag = tagartIndex;
 }
 
@@ -184,6 +222,10 @@
 -(void)containerView:(LYLContainerView *)containerView
        selectedIndex:(int)selectedIndex
 {
+    if (_isTouchTitle) {
+        _isTouchTitle = NO;
+        return;
+    }
     if (selectedIndex < 0) {
         selectedIndex = 0;
     }
@@ -197,15 +239,35 @@
            fromIndex:(int)fromIndex
             progress:(CGFloat)progress
 {
+    if (_isTouchTitle) {
+        _isTouchTitle = NO;
+        return;
+    }
     UIColor *tColor = [UIColor colorWithRed:progress green:0 blue:0 alpha:1.0];
     UIColor *fColor = [UIColor colorWithRed:1 - progress green:0 blue:0 alpha:1.0];
-    UILabel *tagartLabel = self.titleLabels[tagartIndex];
-    UILabel *currentLabel = self.titleLabels[fromIndex];
-    tagartLabel.textColor = tColor;
-    currentLabel.textColor = fColor;
+    LYLTitleLabel *tagartLabel = self.titleLabels[tagartIndex];
+    LYLTitleLabel *currentLabel = self.titleLabels[fromIndex];
+    
     [self _moveMaskViewAnimationWithTagartLabel:tagartLabel currentLabel:currentLabel progress:progress];
     currentLabel.transform = CGAffineTransformMakeScale(1 + 0.2 *(1-progress), 1 + 0.2 *(1-progress));
     tagartLabel.transform = CGAffineTransformMakeScale(1 + 0.2 *progress, 1 + 0.2 *progress);
+    if (self.style.titleViewAnimationStyle == LYLTitleViewAnimationStyleNormal) {
+        if (tagartIndex > fromIndex) {
+            tagartLabel.startLeft = YES;
+            currentLabel.startLeft = YES;
+        }else{
+            tagartLabel.startLeft = NO;
+            currentLabel.startLeft = NO;
+        }
+        tagartLabel.color = self.style.kSelectedTitleColor;
+        tagartLabel.progress = progress;
+        currentLabel.color = self.style.kNomalTitleColor;
+        currentLabel.progress = progress;
+
+    }else{
+        tagartLabel.textColor = tColor;
+        currentLabel.textColor = fColor;
+    }
     
 }
 -(void)_moveMaskViewAnimationWithTagartLabel:(UILabel*)tagartLabel currentLabel:(UILabel*)currentLabel progress:(CGFloat)progress

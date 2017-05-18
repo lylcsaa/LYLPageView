@@ -8,6 +8,8 @@
 
 #import "HomePageViewController.h"
 #import "WateFlowLayout.h"
+#import "CustomNavigationViewController.h"
+#import "PlayerViewController.h"
 @interface HomePageViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property (nonatomic,strong)UICollectionView *collectionView;
 @end
@@ -48,19 +50,16 @@
     cell.backgroundColor = [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1.0];
     return cell;
 }
-//-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if (indexPath.row%3 == 0) {
-//        return CGSizeMake(collectionView.bounds.size.width/2.0 - 20, 100);
-//    }else{
-//        return CGSizeMake(collectionView.bounds.size.width/2.0 - 20, 50);
-//    }
-//}
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if (scrollView.contentOffset.y > scrollView.contentSize.height - scrollView.bounds.size.height) {
         count += 100;
         [self.collectionView reloadData];
     }
+}
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    PlayerViewController *vc = [[PlayerViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 @end

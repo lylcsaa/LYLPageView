@@ -10,10 +10,14 @@
 #import "LYLContainerView.h"
 #import "LYLTitleView.h"
 #import "LYLPageViewStyle.h"
-@interface LYLPageView : UIView
+#import "LYLPageCollectionLayout.h"
+@interface LYLPageView : UIView<LYLPageCollectionViewDataSource>
 -(instancetype)initWithFrame:(CGRect)frame
                       titles:(NSArray*)titles
         childViewControllers:(NSArray*)childViewControllers
         fatherViewController:(UIViewController*)fatherViewController
                        style:(LYLPageViewStyle*)style;
+
+
+-(instancetype)initWithFrame:(CGRect)frame titles:(NSArray*)titles style:(LYLPageViewStyle *)style;
 @end

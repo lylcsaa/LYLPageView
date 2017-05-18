@@ -20,6 +20,11 @@
 		2B423BCC1EC57FBE006B8020 /* LYLPageViewStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B423BCB1EC57FBE006B8020 /* LYLPageViewStyle.m */; };
 		2BA609E41ECC3A0B0098CFC1 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA609E31ECC3A0B0098CFC1 /* HomePageViewController.m */; };
 		2BA609E71ECC42100098CFC1 /* WateFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA609E61ECC42100098CFC1 /* WateFlowLayout.m */; };
+		2BCAB14A1ECD40D700D0822D /* LYLTitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCAB1491ECD40D700D0822D /* LYLTitleLabel.m */; };
+		2BCAB14D1ECD6E3B00D0822D /* UIColor+RondomColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCAB14C1ECD6E3A00D0822D /* UIColor+RondomColor.m */; };
+		2BCAB1501ECD7E9500D0822D /* LYLPageCollectionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCAB14F1ECD7E9500D0822D /* LYLPageCollectionLayout.m */; };
+		2BE53D1D1ECC637C00C98706 /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE53D1C1ECC637C00C98706 /* PlayerViewController.m */; };
+		2BE53D201ECC63C000C98706 /* CustomNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE53D1F1ECC63C000C98706 /* CustomNavigationViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +52,16 @@
 		2BA609E31ECC3A0B0098CFC1 /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
 		2BA609E51ECC42100098CFC1 /* WateFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WateFlowLayout.h; sourceTree = "<group>"; };
 		2BA609E61ECC42100098CFC1 /* WateFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WateFlowLayout.m; sourceTree = "<group>"; };
+		2BCAB1481ECD40D700D0822D /* LYLTitleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYLTitleLabel.h; sourceTree = "<group>"; };
+		2BCAB1491ECD40D700D0822D /* LYLTitleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYLTitleLabel.m; sourceTree = "<group>"; };
+		2BCAB14B1ECD6E3A00D0822D /* UIColor+RondomColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+RondomColor.h"; sourceTree = "<group>"; };
+		2BCAB14C1ECD6E3A00D0822D /* UIColor+RondomColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RondomColor.m"; sourceTree = "<group>"; };
+		2BCAB14E1ECD7E9500D0822D /* LYLPageCollectionLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYLPageCollectionLayout.h; sourceTree = "<group>"; };
+		2BCAB14F1ECD7E9500D0822D /* LYLPageCollectionLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYLPageCollectionLayout.m; sourceTree = "<group>"; };
+		2BE53D1B1ECC637C00C98706 /* PlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerViewController.h; sourceTree = "<group>"; };
+		2BE53D1C1ECC637C00C98706 /* PlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerViewController.m; sourceTree = "<group>"; };
+		2BE53D1E1ECC63C000C98706 /* CustomNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNavigationViewController.h; sourceTree = "<group>"; };
+		2BE53D1F1ECC63C000C98706 /* CustomNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +101,10 @@
 				2B423BAF1EC57EF9006B8020 /* ViewController.m */,
 				2BA609E21ECC3A0B0098CFC1 /* HomePageViewController.h */,
 				2BA609E31ECC3A0B0098CFC1 /* HomePageViewController.m */,
+				2BE53D1E1ECC63C000C98706 /* CustomNavigationViewController.h */,
+				2BE53D1F1ECC63C000C98706 /* CustomNavigationViewController.m */,
+				2BE53D1B1ECC637C00C98706 /* PlayerViewController.h */,
+				2BE53D1C1ECC637C00C98706 /* PlayerViewController.m */,
 				2BA609E51ECC42100098CFC1 /* WateFlowLayout.h */,
 				2BA609E61ECC42100098CFC1 /* WateFlowLayout.m */,
 				2B423BB11EC57EF9006B8020 /* Main.storyboard */,
@@ -93,6 +112,8 @@
 				2B423BB61EC57EF9006B8020 /* LaunchScreen.storyboard */,
 				2B423BB91EC57EF9006B8020 /* Info.plist */,
 				2B423BA81EC57EF9006B8020 /* Supporting Files */,
+				2BCAB14B1ECD6E3A00D0822D /* UIColor+RondomColor.h */,
+				2BCAB14C1ECD6E3A00D0822D /* UIColor+RondomColor.m */,
 			);
 			path = LYLPageView;
 			sourceTree = "<group>";
@@ -118,6 +139,10 @@
 				2B423BCB1EC57FBE006B8020 /* LYLPageViewStyle.m */,
 				2B1B0CFC1EC972B7008D4F31 /* LYLPageViewController.h */,
 				2B1B0CFD1EC972B7008D4F31 /* LYLPageViewController.m */,
+				2BCAB1481ECD40D700D0822D /* LYLTitleLabel.h */,
+				2BCAB1491ECD40D700D0822D /* LYLTitleLabel.m */,
+				2BCAB14E1ECD7E9500D0822D /* LYLPageCollectionLayout.h */,
+				2BCAB14F1ECD7E9500D0822D /* LYLPageCollectionLayout.m */,
 			);
 			path = LYLPageView;
 			sourceTree = "<group>";
@@ -198,11 +223,16 @@
 				2B423BC31EC57F67006B8020 /* LYLPageView.m in Sources */,
 				2BA609E71ECC42100098CFC1 /* WateFlowLayout.m in Sources */,
 				2BA609E41ECC3A0B0098CFC1 /* HomePageViewController.m in Sources */,
+				2BCAB1501ECD7E9500D0822D /* LYLPageCollectionLayout.m in Sources */,
 				2B423BC91EC57FA2006B8020 /* LYLContainerView.m in Sources */,
 				2B423BAD1EC57EF9006B8020 /* AppDelegate.m in Sources */,
 				2B423BC61EC57F77006B8020 /* LYLTitleView.m in Sources */,
+				2BCAB14A1ECD40D700D0822D /* LYLTitleLabel.m in Sources */,
 				2B423BCC1EC57FBE006B8020 /* LYLPageViewStyle.m in Sources */,
 				2B423BAA1EC57EF9006B8020 /* main.m in Sources */,
+				2BE53D1D1ECC637C00C98706 /* PlayerViewController.m in Sources */,
+				2BE53D201ECC63C000C98706 /* CustomNavigationViewController.m in Sources */,
+				2BCAB14D1ECD6E3B00D0822D /* UIColor+RondomColor.m in Sources */,
 				2B1B0CFE1EC972B7008D4F31 /* LYLPageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

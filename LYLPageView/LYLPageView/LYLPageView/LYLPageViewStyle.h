@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UIColor+RondomColor.h"
 #import <UIKit/UIKit.h>
 typedef NS_ENUM(NSInteger,LYLTitleViewMaskStyle)
 {
@@ -14,7 +15,11 @@ typedef NS_ENUM(NSInteger,LYLTitleViewMaskStyle)
     LYLTitleViewMaskStyleUnderLine,
     LYLTitleViewMaskStyleRoundMask
 };
-
+typedef NS_ENUM(NSInteger, LYLTitleViewAnimationStyle)
+{
+    LYLTitleViewAnimationStyleNormal,
+    LYLTitleViewAnimationStyleColor
+};
 @interface LYLPageViewStyle : NSObject
 /**
  **:titleView 的高度，默认 44.0
@@ -24,6 +29,11 @@ typedef NS_ENUM(NSInteger,LYLTitleViewMaskStyle)
  **:title高度
  **/
 @property (nonatomic,assign)CGFloat kTitleHeight;
+
+/**
+ **:<#注释#>
+ **/
+@property (nonatomic,assign)CGFloat kPageControlHeight;
 /**
  **:每个title的间隙 默认 10.0
  **/
@@ -74,4 +84,13 @@ typedef NS_ENUM(NSInteger,LYLTitleViewMaskStyle)
  **:<#注释#>
  **/
 @property (nonatomic,assign)CGFloat kUnderlineMargin;
+/**
+ **:<#注释#>
+ **/
+@property (nonatomic,assign)LYLTitleViewAnimationStyle titleViewAnimationStyle;
+
+/**
+ **:title是否可以滚动
+ **/
+@property (nonatomic,assign)BOOL kEnableScroll;
 @end

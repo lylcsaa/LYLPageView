@@ -31,12 +31,10 @@
     
 //    1.获取cell的个数
     
-//    NSInteger sections = self.collectionView.numberOfSections;
-//    for (int i = 0; i < sections; i ++ ) {
-//        NSMutableArray * arrM = [NSMutableArray array];
-//        [self.attributes addObject:arrM];
-    self.collectionView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
-    NSInteger numberOfitems = [self.collectionView numberOfItemsInSection:0];
+    NSInteger sections = self.collectionView.numberOfSections;
+    for (int i = 0; i < sections; i ++ ) {
+//    self.collectionView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    NSInteger numberOfitems = [self.collectionView numberOfItemsInSection:i];
     CGFloat items = self.numberOfItems;
     NSMutableArray *heights = [NSMutableArray arrayWithArray:@[@(self.collectionView.contentInset.top),@(self.collectionView.contentInset.top)]];
     CGFloat cellW = (self.collectionView.bounds.size.width - (self.collectionView.contentInset.left + self.minimumInteritemSpacing*(items + 1) + self.collectionView.contentInset.right))/items;
@@ -75,18 +73,11 @@
             
         }
     self.heights = heights;
-//    }
+    }
 }
 // 告诉系统怎么布局
 -(NSArray<UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect
 {
-
-//    NSInteger sections = self.collectionView.numberOfSections;
-//    for (int i = 0; i < sections; i++ ) {
-//        return self.attributes[i];
-//    
-//    }
-    
     return self.attributes;
 }
 

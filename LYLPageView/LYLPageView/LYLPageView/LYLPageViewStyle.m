@@ -27,10 +27,13 @@
     _kTitleNomalFont = [UIFont systemFontOfSize:18];
     _kTitleSelectFont = [UIFont systemFontOfSize:20];
     _kTitleHeight = 40.0;
-    _kTitleBackLayerColor = [UIColor orangeColor];
+    _kTitleBackLayerColor = [UIColor grayColor];
     _hasBackMask = YES;
     _maskStyle = LYLTitleViewMaskStyleRoundMask;
     _kUnderLineMaskHeight = 6;
     _kUnderlineMargin = 6;
+    _titleViewAnimationStyle = LYLTitleViewAnimationStyleColor;
+    _kPageControlHeight = 44;
+    _kEnableScroll = YES;
 }
 @end

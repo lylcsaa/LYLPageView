@@ -26,4 +26,5 @@
 @property (nonatomic,weak)id<LYLTitleViewDelegate>delegate;
 
 - (instancetype)initWithFrame:(CGRect)frame titles:(NSArray *)titles style:(LYLPageViewStyle*)style;
+-(void)selectIndex:(NSInteger)index;
 @end

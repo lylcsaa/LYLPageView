@@ -20,6 +20,13 @@ typedef NS_ENUM(NSInteger, LYLTitleViewAnimationStyle)
     LYLTitleViewAnimationStyleNormal,
     LYLTitleViewAnimationStyleColor
 };
+
+typedef NS_ENUM(NSInteger, LYLPageCollectionStyle)
+{
+    LYLPageCollectionStyleNormal,
+    LYLPageCollectionStyleTitleTop,
+    LYLPageCollectionStyleTitleBottom
+};
 @interface LYLPageViewStyle : NSObject
 /**
  **:titleView 的高度，默认 44.0
@@ -93,4 +100,44 @@ typedef NS_ENUM(NSInteger, LYLTitleViewAnimationStyle)
  **:title是否可以滚动
  **/
 @property (nonatomic,assign)BOOL kEnableScroll;
+
+/**
+ **:标题在顶部还是地部
+ **/
+@property (nonatomic,assign)LYLPageCollectionStyle pageCollectionStyle;
+
+
+/**
+ **:collectionView间距
+ **/
+@property (nonatomic,assign)CGFloat minimumLineSpacing;
+@property (nonatomic,assign)CGFloat minimumInteritemSpacing;
+
+/**
+ **:collectionView内边距
+ **/
+@property (nonatomic,assign)UIEdgeInsets edgeInsets;
+
+/**
+ **:collectionView 背景颜色
+ **/
+@property (nonatomic,strong)UIColor * collectionViewBackgroundColor;
+
+/**
+ **:pageControl 背景颜色
+ **/
+@property (nonatomic,strong)UIColor * pageCantrolBackgroundColor;
+/**
+ **:pageControl 选中颜色
+ **/
+@property (nonatomic,strong)UIColor * pageControlSelectedColor;
+/**
+ **:pageControl 未选中的颜色
+ **/
+@property (nonatomic,strong)UIColor * pageControlUnSelectedColor;
+/**
+ **:pageView 北京颜色
+ **/
+@property (nonatomic,strong)UIColor * pageViewBackgroundColor;
+
 @end

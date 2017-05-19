@@ -173,6 +173,10 @@
     }
    [self _selectedTitleWithTagartIndex:tagartTag];
 }
+-(void)selectIndex:(NSInteger)index
+{
+    [self _selectedTitleWithTagartIndex:index];
+}
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
 

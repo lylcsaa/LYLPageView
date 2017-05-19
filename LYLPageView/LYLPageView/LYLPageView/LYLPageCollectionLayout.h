@@ -7,10 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+typedef struct LYLPageColumAndRow {
+    NSInteger colums, rows;
+} LYLPageColumAndRow;
+UIKIT_STATIC_INLINE LYLPageColumAndRow LYLPageColumAndRowsMake(NSInteger colums, NSInteger rows) {
+    LYLPageColumAndRow columAndRows = {colums, rows};
+    return columAndRows;
+}
 @class LYLPageCollectionLayout;
 @protocol LYLPageCollectionViewDataSource<NSObject>
--(NSInteger)numberOfColmeInSection:(NSInteger)section;
--(NSInteger)numberOfRowsInSection:(NSInteger)section;
+-(LYLPageColumAndRow)pageColumAndRowInSection:(NSInteger)section;
+-(void)pageLayout:(LYLPageCollectionLayout*)layout pageInSection:(NSInteger)section page:(NSInteger)page currentPage:(NSInteger)currentPage;
 @end
 @interface LYLPageCollectionLayout : UICollectionViewFlowLayout
 /**
@@ -21,4 +28,8 @@
  **:<#注释#>
  **/
 @property (nonatomic,weak)id<LYLPageCollectionViewDataSource> dataSource;
+/**
+ **:<#注释#>
+ **/
+@property (nonatomic,assign)CGFloat contentSizeX;
 @end

@@ -9,7 +9,7 @@
 #import "PlayerViewController.h"
 
 #import "LYLPageView.h"
-@interface PlayerViewController ()
+@interface PlayerViewController ()<LYLPageViewDelegate>
 
 @end
 
@@ -31,8 +31,27 @@
     NSArray *titles = @[@"热门",@"经典",@"最新",@"更多"];
     LYLPageViewStyle *style = [[LYLPageViewStyle alloc] init];
     style.kEnableScroll = NO;
-    LYLPageView *pageView = [[LYLPageView alloc] initWithFrame:CGRectMake(0, 100, self.view.bounds.size.width, 300) titles:titles style:style];
+    style.pageCollectionStyle = LYLPageCollectionStyleTitleBottom;
+    LYLPageView *pageView = [[LYLPageView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.view.bounds) - 300, self.view.bounds.size.width, 300) titles:titles style:style];
+    pageView.delegate = self;
     [self.view addSubview:pageView];
 }
-
+-(LYLPageColumAndRow)lyl_pageView:(LYLPageView*)pageView columAndRowsInPerSection:(NSInteger)section
+{
+    return LYLPageColumAndRowsMake(4, 3);
+}
+-(void)lyl_pageView:(LYLPageView*)pageView didSelectWithIndexPath:(NSIndexPath*)indexPath
+{
+    NSLog(@"点击了第%zd组,第%zd个item", indexPath.section, indexPath.row);
+}
+-(UICollectionViewCell*)lyl_pageView:(LYLPageView*)pageView collectionView:(UICollectionView *)collectionView cellForRowInIndexPath:(NSIndexPath *)indexPath reuserIdentifer:(NSString *)reuserIdentifer
+{
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuserIdentifer forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor rondomColor];
+    return cell;
+}
+-(NSInteger)lyl_pageView:(LYLPageView*)pageView numberOfRowsInSection:(NSInteger)section
+{
+    return 30;
+}
 @end

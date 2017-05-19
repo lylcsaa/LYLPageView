@@ -33,7 +33,17 @@
     _kUnderLineMaskHeight = 6;
     _kUnderlineMargin = 6;
     _titleViewAnimationStyle = LYLTitleViewAnimationStyleColor;
-    _kPageControlHeight = 44;
+    _kPageControlHeight = 20;
     _kEnableScroll = YES;
+    _pageCollectionStyle = LYLPageCollectionStyleTitleTop;
+    _minimumLineSpacing = 10;
+    _minimumInteritemSpacing = 10;
+    _edgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
+    _collectionViewBackgroundColor = [UIColor whiteColor];
+    _pageCantrolBackgroundColor = [UIColor clearColor];
+    _pageControlSelectedColor = [UIColor grayColor];
+    _pageControlUnSelectedColor = [UIColor lightGrayColor];
+    _pageViewBackgroundColor = [UIColor whiteColor];
+    
 }
 @end
